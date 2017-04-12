@@ -17,7 +17,9 @@ Compilation
 Run app:
      java -jar FXFreebitcoAutoplay-jar-with-dependencies.jar
 
-
+Requeriments
+     Java version: 1.8+ (if using openjdk javafx api is needed to run the app).
+     
 Also, as this is an OpenSource GNU GPL solution, feel free to adapt it to any other faucets like freebitco.in, as it is only needed to add the script and bit of work on the view controller. Its also possible to change the play approach by changing the script content
 
 You can send any donation to my wallet address 15nfsqNbUCUgtmKyhXaUa2PytoCuryiDEZ .
