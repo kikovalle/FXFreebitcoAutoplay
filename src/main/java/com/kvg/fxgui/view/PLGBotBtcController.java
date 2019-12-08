@@ -30,6 +30,8 @@ public class PLGBotBtcController implements Initializable, Serializable {
 	private String faucetUrl = "https://freebitco.in/?r=4047796";
 	private ChangeListener<Worker.State> reloadHandler;
 	final StringBuffer scriptBuffer = new StringBuffer();
+	private int counter = 0;
+	private int pasos = 2;
 
 	/**
 	 * {@inheritDoc}
@@ -39,7 +41,12 @@ public class PLGBotBtcController implements Initializable, Serializable {
 		LOG.debug("Initializing view controller...");
 		reloadHandler = (ov, oldState, newState) -> {
 			if (Worker.State.SUCCEEDED.equals(newState)) {
-				vistaWeb.getEngine().executeScript(scriptBuffer.toString());
+				counter = (counter + 1) % pasos;
+				if (counter == 0) {
+					vistaWeb.getEngine().executeScript(scriptBuffer.toString());
+				} else {
+					vistaWeb.getEngine().reload();
+				}
 			}
 		};
 		vistaWeb.getEngine().load(faucetUrl);
